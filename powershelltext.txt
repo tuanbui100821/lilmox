@@ -1,0 +1,40 @@
+# 1. Thiết lập đường dẫn
+$outputFile = "output_gon_gang.txt"
+if (Test-Path $outputFile) { Remove-Item $outputFile }
+
+# 2. Định nghĩa các thư mục chỉ muốn lấy tên file (không lấy nội dung)
+$listOnlyFolders = @("gallery", "mp3")
+
+# 3. Lấy tất cả các mục trong thư mục hiện tại
+Get-ChildItem -Recurse -Exclude "node_modules", ".git", "dist", "build" | ForEach-Object {
+    $item = $_
+    $parentDir = $item.Directory.Name
+    
+    # Trường hợp 1: Nếu file nằm trong thư mục gallery hoặc mp3 -> Chỉ ghi tên file
+    if ($listOnlyFolders -contains $parentDir) {
+        $msg = "[DANH SÁCH FILE] Thư mục: $parentDir | Tên file: $($item.Name)"
+        $msg | Out-File -FilePath $outputFile -Append -Encoding utf8
+    }
+    # Trường hợp 2: Nếu là file code (py, js, html, css...) -> Ghi cả nội dung
+    elseif ($item.Extension -match "\.(py|js|html|css|txt|json)$") {
+        $header = @"
+
+============================================================
+ DIRECTORY: [$parentDir] 
+ FILE NAME: $($item.Name)
+ [NỘI DUNG CODE DƯỚI ĐÂY]
+============================================================
+"@
+        $header | Out-File -FilePath $outputFile -Append -Encoding utf8
+        
+        try {
+            Get-Content $item.FullName | Out-File -FilePath $outputFile -Append -Encoding utf8
+        } catch {
+            " [Lỗi: Không thể đọc nội dung file] " | Out-File -FilePath $outputFile -Append -Encoding utf8
+        }
+        
+        "`n" + ("-" * 60) | Out-File -FilePath $outputFile -Append -Encoding utf8
+    }
+}
+
+Write-Host "Xong! Đã gom code và liệt kê danh sách ảnh/nhạc vào $outputFile" -ForegroundColor Green
