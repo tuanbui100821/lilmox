@@ -7,7 +7,11 @@
     <link rel="stylesheet" href="index.css">
     <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
     <style>
-        body { overflow-y: auto !important; } /* Cho phép cuộn trang */
+        body {
+            overflow-y: auto !important;
+            margin: 0;
+            background-color: #f0f2f5; /* Màu nền nhẹ nhàng */
+        }
         .gallery-container {
             padding: 50px 20px;
             text-align: center;
@@ -27,11 +31,13 @@
             object-fit: cover;
             border-radius: 15px;
             border: 5px solid #fff;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-            transition: transform 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
         }
         .photo-grid img:hover {
             transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.25);
         }
         .back-btn {
             display: inline-block;
@@ -39,6 +45,18 @@
             color: #fff;
             text-decoration: none;
             font-size: 20px;
+            background: rgba(0,0,0,0.3);
+            padding: 10px 20px;
+            border-radius: 25px;
+            transition: 0.3s;
+        }
+        .back-btn:hover {
+            background: rgba(0,0,0,0.5);
+        }
+        h1 {
+            font-family: 'Pacifico', cursive;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
     </style>
 </head>
@@ -48,18 +66,43 @@
         <a href="index.html" class="back-btn">⬅ Quay lại thiệp</a>
         <h1 style="font-size: 40px; margin-bottom: 40px;">Our Gallery</h1>
 
-        <div class="photo-grid">
-            <div class="photo-grid">
-                <img src="../gallery/28398930-bd70-4b60-a293-02144cb0dd52.jpg">
-                <img src="../gallery/5f0f8566-0608-4846-a674-b4cf8018b3d7.jpg">
-                <img src="../gallery/8d241f66-24d9-41bd-b5bd-ffc16888333b.jpg">
-                <img src="../gallery/a3936549-32a4-4685-9826-2c272eee1e8a.jpg">
-                <img src="../gallery/c370ea88-4dac-4e47-ba84-f4fe856a78a5.jpg">
-                <img src="../gallery/ca261da4-5eaf-4f83-a105-9c6de4db3590.jpg">
-                <img src="./gallery/IMG_2494.jpg">
-            </div>
-        </div>
+        <div class="photo-grid" id="image-gallery"></div>
     </div>
 </div>
+
+<script>
+    // 1. Danh sách tên các file ảnh trong folder gallery của bạn
+    // Sau này có ảnh mới, bạn chỉ cần thêm tên file vào danh sách này
+    const imageFiles = [
+        "28398930-bd70-4b60-a293-02144cb0dd52.jpg",
+        "5f0f8566-0608-4846-a674-b4cf8018b3d7.jpg",
+        "8d241f66-24d9-41bd-b5bd-ffc16888333b.jpg",
+        "a3936549-32a4-4685-9826-2c272eee1e8a.jpg",
+        "c370ea88-4dac-4e47-ba84-f4fe856a78a5.jpg",
+        "ca261da4-5eaf-4f83-a105-9c6de4db3590.jpg",
+        "IMG_2494.jpg"
+    ];
+
+    // 2. Đường dẫn tới folder chứa ảnh (điều chỉnh cho đúng cấu trúc thư mục của bạn)
+    const folderPath = "./gallery/";
+
+    // 3. Lấy phần tử grid để chèn ảnh
+    const galleryContainer = document.getElementById('image-gallery');
+
+    // 4. Tự động tạo thẻ img cho mỗi file trong danh sách
+    imageFiles.forEach(fileName => {
+        const imgElement = document.createElement('img');
+
+        // Gán đường dẫn: folder + tên file
+        imgElement.src = folderPath + fileName;
+        imgElement.alt = "Kỷ niệm của tụi mình";
+
+        // Tối ưu: Chỉ load ảnh khi cuộn tới nơi
+        imgElement.loading = "lazy";
+
+        // Thêm ảnh vào lưới
+        galleryContainer.appendChild(imgElement);
+    });
+</script>
 </body>
 </html>
