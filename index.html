@@ -12,27 +12,67 @@
 </head>
 
 <body>
-    <!-- Happy Valentines day Codepen! -->
+<audio id="bg-music" src="path-to-your-music.mp3" autoplay loop></audio>
+
+<div id="app-container">
     <div class="bgoverlay">
         <div class="container">
-            <span class="ico">
-            <span class="ico2"></span>
-            <span class="title">Click Me</span>
-            </span>
+                <span class="ico">
+                    <span class="ico2"></span>
+                    <span class="title">Click Me</span>
+                </span>
             <div class="endtext">
                 <span class="close" title="Restart">x</span>
-                <h1>Send: Duyên Nguyễn</h1>
+                <h1>Send: Mõ kon</h1>
                 <h1>Không bic nói gì</h1>
                 <h2>Iu nàng</h2>
                 <h3>Kí tên : Tuan Minh Bui </h3>
                 <br>
-                <a href="gallery.html" style="color: #fff; text-decoration: underline; font-size: 18px;">Xem album kỷ niệm của tụi mình nhé! ❤️</a>
+                <span></span>
+                <a href="gallery.html" id="btn-gallery" style="color: #fff; text-decoration: underline; font-size: 18px;">Xem album kỷ niệm của tụi mình nhé! ❤️</a>
             </div>
         </div>
     </div>
+</div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="index.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="index.js"></script>
+
+<script>
+    $(document).ready(function() {
+        // Xử lý click để chuyển trang không load lại
+        $(document).on('click', '#btn-gallery', function(e) {
+            e.preventDefault(); // Ngăn trình duyệt load trang mới
+            const url = $(this).attr('href');
+
+            // Dùng AJAX để lấy nội dung từ file gallery.html
+            $.ajax({
+                url: url,
+                success: function(data) {
+                    // Trích xuất phần nội dung chính từ gallery.html (giả sử nằm trong body)
+                    const newContent = $(data).find('body').html() || data;
+
+                    // Thay đổi nội dung hiển thị mà không đụng đến thẻ <audio>
+                    $('#app-container').fadeOut(500, function() {
+                        $(this).html(newContent).fadeIn(500);
+                    });
+
+                    // Cập nhật đường dẫn trên trình duyệt (tùy chọn)
+                    window.history.pushState({}, '', url);
+                },
+                error: function() {
+                    alert("Không thể tải được album, hãy kiểm tra lại file gallery.html nhé!");
+                }
+            });
+        });
+
+        // Tự động phát nhạc khi người dùng click lần đầu vào trang (vì chính sách trình duyệt)
+        $('body').one('click', function() {
+            const audio = document.getElementById('bg-music');
+            audio.play();
+        });
+    });
+</script>
 </body>
 
 </html>
