@@ -20,6 +20,7 @@
             position: relative;
             background-size: cover;
             overflow: hidden;
+            background-color: #fce4ec; /* Màu nền nhẹ nhàng nếu thiếu ảnh nền */
         }
 
         /* Hiệu ứng Floating Hearts */
@@ -28,7 +29,7 @@
             color: #ff4d6d;
             font-size: 20px;
             pointer-events: none;
-            z-index: 0;
+            z-index: 1;
             animation: fly 10s linear infinite;
             opacity: 0.6;
         }
@@ -39,7 +40,34 @@
 
         .gallery-container { padding: 50px 20px; text-align: center; position: relative; z-index: 2; }
 
-        /* Hiệu ứng trượt ảnh khi load */
+        /* Thanh điều hướng chứa 2 nút */
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            max-width: 1100px;
+            margin: 0 auto 30px auto;
+            padding: 0 10px;
+        }
+
+        .back-btn, .next-btn {
+            display: inline-block;
+            color: #fff;
+            text-decoration: none;
+            background: rgba(255, 77, 109, 0.7);
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: bold;
+            font-family: sans-serif;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .back-btn:hover, .next-btn:hover {
+            background: rgba(255, 77, 109, 1);
+            transform: scale(1.1);
+        }
+
+        /* Grid ảnh */
         .photo-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -49,18 +77,17 @@
             padding-bottom: 100px;
         }
         .photo-grid img {
-            z-index: 3 !important;
             width: 100%; height: 350px; object-fit: cover;
             border-radius: 15px; border: 5px solid ;
             box-shadow: 0 8px 20px rgba(0,0,0,0.3);
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             cursor: pointer;
-            opacity: 0; transform: translateY(30px); /* Gốc để diễn hoạt */
+            opacity: 0; transform: translateY(30px);
         }
         .photo-grid img.show { opacity: 1; transform: translateY(0); }
         .photo-grid img:hover { transform: scale(1.05) rotate(1deg); border-color: #ff4d6d; }
 
-        /* Lightbox - Phóng to ảnh */
+        /* Lightbox */
         #lightbox {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0,0,0,0.9); display: none;
@@ -68,21 +95,22 @@
         }
         #lightbox img { max-width: 90%; max-height: 85%; border-radius: 10px; border: 3px solid #fff; }
 
-        h1 { font-family: 'Pacifico', cursive; font-size: 50px; color: white; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
-        .back-btn {
-            display: inline-block; margin-bottom: 20px; color: #fff;
-            text-decoration: none; background: rgba(255, 77, 109, 0.7);
-            padding: 10px 25px; border-radius: 30px; font-weight: bold;
-        }
+        h1 { font-family: 'Pacifico', cursive; font-size: 50px; color: white; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); margin-bottom: 40px; }
     </style>
 </head>
 <body>
 
 <div class="bgoverlay">
     <div id="heart-container"></div>
+
     <div class="gallery-container">
-        <a href="index.html" class="back-btn">⬅ Back</a>
+        <div class="nav-container">
+            <a href="index.html" class="back-btn">⬅ Back</a>
+            <a href="favorite.html" class="next-btn">Next ➡</a>
+        </div>
+
         <h1>Our Memories</h1>
+
         <div class="photo-grid" id="image-gallery"></div>
     </div>
 </div>
@@ -107,13 +135,11 @@
             imgElement.onclick = () => {
                 document.getElementById('lightbox-img').src = img.src;
                 document.getElementById('lightbox').style.display = 'flex';
-                isAutoScrolling = false; // Dừng cuộn khi đang xem ảnh
+                isAutoScrolling = false;
             };
             galleryGrid.appendChild(imgElement);
 
-            // Hiệu ứng hiện dần cho từng ảnh
             setTimeout(() => imgElement.classList.add('show'), index * 100);
-
             tryLoadImage(index + 1);
         };
 
@@ -151,7 +177,6 @@
     }
     setInterval(createHeart, 800);
 
-    // Tương tác người dùng
     window.addEventListener("wheel", () => isAutoScrolling = false);
     window.addEventListener("touchstart", () => isAutoScrolling = false);
 
