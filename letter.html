@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Letter For You</title>
+    <link href="https://fonts.googleapis.com/css?family=Pacifico|Dancing+Script:400,700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            background-color: #fdf5e6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .letter-container {
+            width: 90%;
+            max-width: 600px;
+            background: #fff;
+            padding: 60px 50px 50px 70px;
+            box-shadow: 20px 20px 60px #d9d4c7;
+            border-radius: 2px;
+            position: relative;
+            min-height: 450px;
+            /* CỐ ĐỊNH CHIỀU RỘNG KHUNG */
+            box-sizing: border-box;
+        }
+
+        /* Lề giấy kẻ dọc */
+        .letter-container::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 50px;
+            width: 2px; height: 100%;
+            background: rgba(255, 0, 0, 0.2);
+        }
+
+        h1 {
+            font-family: 'Pacifico', cursive;
+            color: #333;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        #typewriter {
+            font-family: 'Dancing Script', cursive;
+            font-size: 24px;
+            line-height: 1.6;
+            color: #000000; /* Màu đen mực bút mực */
+            white-space: pre-wrap;
+            position: relative;
+            display: inline;
+            /* TỰ ĐỘNG XUỐNG DÒNG KHI CHẠM LỀ */
+            word-break: break-word;
+            overflow-wrap: break-word;
+        }
+
+        /* Ngòi bút */
+        #pen {
+            position: absolute;
+            width: 50px;
+            height: 20px;
+            background-image: url('https://png.pngtree.com/png-vector/20240310/ourmid/pngtree-black-and-gold-fountain-pen-png-image_11927367.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            z-index: 10;
+            pointer-events: none;
+            /* Căn chỉnh ngòi bút trỏ vào đầu chữ */
+            transform: translate(-5px, -35px);
+            transition: all 0.1s linear;
+        }
+
+        /* Hiệu ứng ngòi bút rung nhẹ khi viết */
+        .pen-writing {
+            animation: write-move 0.1s infinite alternate;
+        }
+
+        @keyframes write-move {
+            from { transform: translate(-5px, -35px) rotate(0deg); }
+            to { transform: translate(-3px, -37px) rotate(3deg); }
+        }
+
+        .signature {
+            margin-top: 50px;
+            text-align: right;
+            font-family: 'Dancing Script', cursive;
+            font-size: 30px;
+            color: #000;
+            opacity: 0;
+            transition: opacity 2s;
+        }
+
+        .show-signature { opacity: 1; }
+
+        .btn-replay {
+            display: block;
+            margin-top: 40px;
+            text-align: center;
+            color: #d35400;
+            text-decoration: none;
+            font-weight: bold;
+            font-family: sans-serif;
+            font-size: 14px;
+            opacity: 0;
+            transition: 2s;
+        }
+    </style>
+</head>
+<body>
+
+<div id="app-container">
+    <div class="letter-container">
+        <h1>Gửi em...</h1>
+
+        <span id="typewriter"></span>
+        <div id="pen"></div>
+
+        <div class="signature" id="signature">Yêu em nhiều, <br> Ba Sữa & Bùi Sữa ❤️</div>
+        <a href="index.html" class="btn-replay" id="replay">Xem lại từ đầu ⬅</a>
+    </div>
+</div>
+
+<script>
+    const text = "Vậy là hành trình nhỏ của chúng mình đến đây là trang cuối rồi...rưqerweqrqwrwqrwqrwqerwqerwqerwqrqwerqwerfsadfasdfasdfasdfsafsadfsadfsadrewqrqewrweq \n\nAnh muốn nói rằng, cảm ơn em vì đã luôn ở bên cạnh anh, cùng anh chăm sóc Bùi Sữa, cùng anh nghe những bài nhạc cũ và cả những lần bao dung cho cái sự 'ham đá bóng' của anh nữa." +
+        "\n\nThế giới ngoài kia có thể ồn ào, nhưng ở đây, trong thế giới nhỏ này, anh chỉ mong chúng mình cứ bình yên và hạnh phúc như thế thôi." +
+        "\n\nEm đồng ý viết tiếp những trang tiếp theo cùng anh nhé?sadfasdfsadfasdfasdfasdfasdffsafrewqrqwerwqerwqerqwerqwrwqerwqerqwerwqerqwerqwerqwerwqerqwerqwerqwerwqersdfasdfsadfasdfasd";
+
+    let index = 0;
+    const speed = 110;
+    const typewriterElement = document.getElementById('typewriter');
+    const pen = document.getElementById('pen');
+    const signatureElement = document.getElementById('signature');
+    const replayBtn = document.getElementById('replay');
+
+    function typeWriter() {
+        if (index < text.length) {
+            // Thêm hiệu ứng rung cho bút khi đang viết
+            pen.classList.add('pen-writing');
+
+            typewriterElement.innerText += text.charAt(index);
+            updatePenPosition();
+
+            index++;
+            setTimeout(typeWriter, speed);
+        } else {
+            // Khi xong thư
+            pen.classList.remove('pen-writing');
+            pen.style.display = "none";
+            signatureElement.classList.add('show-signature');
+            replayBtn.style.opacity = "1";
+        }
+    }
+
+    function updatePenPosition() {
+        const range = document.createRange();
+        range.selectNodeContents(typewriterElement);
+        const rects = range.getClientRects();
+        const lastRect = rects[rects.length - 1];
+
+        if (lastRect) {
+            const containerRect = document.querySelector('.letter-container').getBoundingClientRect();
+            // Cập nhật vị trí pen bám sát ký tự cuối cùng
+            pen.style.left = (lastRect.right - containerRect.left) + "px";
+            pen.style.top = (lastRect.bottom - containerRect.top) + "px";
+        }
+    }
+
+    setTimeout(typeWriter, 1500);
+</script>
+</body>
+</html>

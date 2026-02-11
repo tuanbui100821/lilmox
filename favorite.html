@@ -35,7 +35,6 @@
             cursor: pointer;
         }
 
-        /* Ô to chiếm 2 cột */
         .big { grid-column: span 2; }
 
         .hobby-item img {
@@ -43,28 +42,14 @@
             object-fit: cover;
             transition: transform 0.5s;
         }
-        /* Lớp riêng cho ô Chelsea */
+
         .chelsea-item .overlay {
-            background: rgba(3, 70, 148, 0.9) !important; /* Màu xanh Chelsea (Royal Blue) */
+            background: rgba(3, 70, 148, 0.9) !important;
         }
 
-        /* Thêm logo Chelsea chìm vào nền khi hover */
-        .chelsea-item:hover .overlay {
-            /*background-image: url('https://upload.wikimedia.org/wikipedia/en/thumb/c/cc/Chelsea_FC.svg/1200px-Chelsea_FC.svg.png');*/
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: 150px; /* Chỉnh logo to nhỏ tùy ý */
-            background-blend-mode: overlay; /* Giúp logo hòa trộn vào nền xanh */
-        }
-
-        .chelsea-item h2 {
-            color: #ffffff;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        }
-        /* Lớp phủ thông tin khi hover */
         .overlay {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(255, 140, 0, 0.85); /* Màu cam ấm áp */
+            background: rgba(255, 140, 0, 0.85);
             display: flex; flex-direction: column; justify-content: center; align-items: center;
             color: white; padding: 30px; text-align: center;
             opacity: 0; transition: opacity 0.4s;
@@ -77,107 +62,120 @@
         .overlay h2 { margin: 0 0 10px 0; font-size: 24px; }
         .overlay p { font-size: 14px; line-height: 1.4; }
 
-        /* Nút quay lại */
-        .nav-btn {
-            position: fixed; top: 20px; left: 20px;
-            background: #ff8c00; color: white;
-            padding: 10px 20px; border-radius: 20px;
-            text-decoration: none; font-weight: bold; z-index: 100;
+        /* CSS CHO NÚT NEXT */
+        .footer-nav {
+            text-align: center;
+            padding: 60px 0 100px;
+        }
+
+        .next-btn {
+            display: inline-block;
+            padding: 18px 45px;
+            background: #ff8c00;
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: bold;
+            border-radius: 50px;
+            box-shadow: 0 10px 20px rgba(255, 140, 0, 0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .next-btn:hover {
+            background: #ff7b00;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(255, 140, 0, 0.4);
         }
     </style>
 </head>
 <body>
 
+<div id="app-container">
+    <div class="header">
+        <h1>Our Little World</h1>
+        <p>Những điều nhỏ bé khiến chúng mình hạnh phúc</p>
+    </div>
 
-<div class="header">
-    <h1>Our Little World</h1>
-    <p>Những điều nhỏ bé khiến chúng mình hạnh phúc</p>
-</div>
+    <div class="hobby-grid">
+        <div class="hobby-item big">
+            <img src="./favorite/download" alt="Milk">
+            <div class="overlay">
+                <h2>Bùi Sữa</h2>
+                <p>Thằng con trai nghịch như quỷ nhưng được cái tình cảm</p>
+            </div>
+        </div>
 
-<div class="hobby-grid">
-    <div class="hobby-item big">
-        <img src="./favorite/download" alt="Milk">
-        <div class="overlay">
-            <h2>Bùi Sữa</h2>
-            <p>Thằng con trai nghịch như quỷ nhưng được cái tình cảm</p>
+        <div class="hobby-item">
+            <img src="./favorite/download%20(2)" alt="Music">
+            <div class="overlay">
+                <h2>Our Playlist 🎵</h2>
+                <p>Real love , Dilemma , Loving you sunny, Tình cờ, ai ngoài anh , tình cờ,.... và rất nhiều bài nhạc mình share cho nhau</p>
+            </div>
+        </div>
+
+        <div class="hobby-item">
+            <img src="./favorite/download%20(5)" alt="Travel">
+            <div class="overlay">
+                <h2>Trip ✈️</h2>
+                <p>Những lần đi chơi xa cùng nhau , nhiều lần khóc lóc , giận dỗi , nuối tiếc nhưng mình cứ đi cùng nhau</p>
+            </div>
+        </div>
+
+        <div class="hobby-item big">
+            <img src="./favorite/download%20(4)" alt="Home">
+            <div class="overlay">
+                <h2>Chilling at Home 🏠</h2>
+                <p>Những lần nấu cơm ở nhà rồi vừa ăn vừa xem phim.</p>
+            </div>
+        </div>
+
+        <div class="hobby-item big">
+            <img src="./favorite/download%20(3)" alt="Football">
+            <div class="overlay">
+                <h2>Đá bóng</h2>
+                <p>Những lần đá bóng bị lật cổ chân rồi bị dỗi vì đã chấn thương còn ham đá tiếp hay là những lần bị muộn giờ hát của người yêu ở 88</p>
+            </div>
+        </div>
+
+        <div class="hobby-item chelsea-item">
+            <img src="./favorite/download%20(6)" alt="Chelsea">
+            <div class="overlay">
+                <h2>Chelsea</h2>
+                <p>Blue is the colour, football is the game!</p>
+                <p style="font-size: 8px; line-height: 1;">(Logo ASCII...)</p>
+            </div>
         </div>
     </div>
 
-    <div class="hobby-item">
-        <img src="./favorite/download%20(2)" alt="Music">
-        <div class="overlay">
-            <h2>Our Playlist 🎵</h2>
-            <p>Real love , Dilemma , Loving you sunny, Tình cờ, ai ngoài anh , tình cờ,....
-                và rất nhiều bài nhạc mình share cho nhau</p>
-        </div>
-    </div>
-
-    <div class="hobby-item">
-        <img src="./favorite/download%20(5)" alt="Travel">
-        <div class="overlay">
-            <h2>Trip ✈️</h2>
-            <p>Những lần đi chơi xa cùng nhau , nhiều lần khóc lóc , giận dỗi , nuối tiếc
-                nhưng mình cứ đi cùng nhau</p>
-        </div>
-    </div>
-
-    <div class="hobby-item big">
-        <img src="./favorite/download%20(4)" alt="Home">
-        <div class="overlay">
-            <h2>Chilling at Home 🏠</h2>
-            <p>Những lần nấu cơm ở nhà rồi vừa ăn vừa xem phim.</p>
-        </div>
-    </div>
-    <div class="hobby-item big">
-        <img src="./favorite/download%20(3)" alt="Football">
-        <div class="overlay">
-            <h2>Đá bóng</h2>
-            <p>Những lần đá bóng bị lật cổ chân rồi bị dỗi vì đã chấn thương còn ham đá tiếp
-                hay là những lần bị muộn giờ hát của người yêu ở 88</p>
-        </div>
-    </div>
-
-    <div class="hobby-item chelsea-item">
-        <img src="./favorite/download%20(6)" alt="Chelsea">
-        <div class="overlay">
-            <h2>Chelsea</h2>
-            <p>Blue is the colour, football is the game!</p>
-            <p>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣴⣶⣿⠿⠟⠛⠛⠛⢻⣄⡀⢀⡀⢀⣀⠀⠀⡀⠀⠙⠛⠛⠿⠿⠿⣶⣦⣄⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-                ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⣶⠿⠛⠉⠁⣀⣀⣤⣤⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣦⣤⣄⡀⠀⠈⠉⠻⢷⣤⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-                ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣾⠿⠉⠀⢀⣠⣶⣾⣿⣿⣿⣿⡟⠋⣉⣩⣿⣿⡿⠀⣿⣿⣿⣿⡿⠛⠻⢿⣿⣿⣿⣿⣶⣄⡀⠀⠈⠻⢿⣦⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-                ⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⠿⠛⠁⢀⣰⣾⣿⣿⠿⣿⡏⠈⢿⣿⣷⠀⠙⣛⣿⣿⣿⠀⣿⣿⣿⣿⣆⠀⠻⣾⣿⣿⡟⠛⠻⢿⣿⣷⣦⣀⠀⠈⠻⣷⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀
-                ⠀⠀⠀⠀⠀⠀⠀⢠⣴⠿⠁⠀⣠⣶⣿⣿⣿⣿⣷⠀⠘⠋⠀⠈⢿⣿⡆⠘⠿⢿⣿⣯⣀⣙⠛⣿⣟⠻⠇⠀⢸⣿⠏⠀⠰⢶⣶⣿⣿⣿⣿⣷⣄⡀⠀⠹⢷⣄⠀⠀⠀⠀⠀⠀⠀
-                ⠀⠀⠀⠀⠀⢀⣴⡿⠁⠀⣠⣾⣿⡿⢋⣠⣽⣿⣿⣧⠀⠸⣿⣄⣨⣿⣿⣾⣿⣿⠿Chelsea⠿⠿⠿⠿⣿⣿⣷⣦⣶⣿⣟⠀⠰⣶⣾⣿⣿⣿⡿⠟⢻⣿⣷⣄⠀⠀⠻⣷⡀⠀⠀⠀⠀⠀
-                ⠀⠀⠀⠀⣠⣿⠋⠀⢀⣼⣿⣿⣿⠀⠸⣿⣿⡿⠉⣿⣷⣾⣿⡿⠿⠛⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠛⠻⠿⣿⣶⣼⣿⠟⠋⠁⠀⢠⣿⣿⣿⣿⣷⣄⠀⠈⢿⣦⡀⠀⠀⠀
-                ⠀⠀⠀⣠⡟⠁⠀⣠⣿⣿⣿⣿⣿⣧⡀⠈⠛⢁⣴⣿⡿⠛⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠙⠻⣿⣶⣿⠆⠀⣾⣿⣿⣿⣿⣿⣿⣦⠀⠈⠻⣷⡀⠀⠀
-                ⠀⠀⣰⡿⠀⠀⣠⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠛⠀⠀⣀⣤⣄⡀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠘⠿⣿⣧⣰⣿⣿⣿⣿⣿⣿⣿⣿⣧⠀⠀⢻⣧⠀⠀
-                ⠀⢰⡟⠁⠀⣰⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠋⠀⠀⠀⣼⣿⠿⢿⣿⡇⠀⠀⠀⠀⠀⢴⣿⣿⣿⣿⣿⣶⣤⡀⠀⠀⠀⠀⠀⠀⠘⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣧⡀⠀⢻⣇⠀
-                ⢰⣿⠁⠀⢰⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠟⠁⠀⠀⠀⠀⠻⣿⣷⣾⣿⠇⠀⠀⠀⢀⣀⣸⣿⣿⣿⣿⣿⣿⣿⣟⡀⠀⠀⠀⠀⠀⠀⠀⠙⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣧⠀⠈⢿⣦
-                ⣿⡏⠀⢰⣿⣿⣿⡿⢿⣿⣿⣿⣿⣿⠏⠀⠀⠀⠀⠀⠀⠀⣸⣿⣟⡁⠀⠀⠀⠀⠘⣿⣿⣿⣿⣿⣿⣿⣄⠉⠻⠿⣷⣤⣤⣀⠀⠀⠀⠀⠘⢿⣿⣿⣿⣿⡿⣿⣿⣿⣿⣇⠀⢸⣿
-                ⣿⠅⠀⣾⣿⣟⣯⣷⣻⢭⢿⣿⣿⠏⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣷⣦⣄⣀⣀⣰⣿⣿⣿⣿⣿⡟⠋⠙⠀⠀⠈⠉⠻⣿⣿⣧⠀⠀⠀⠀⠘⣿⣿⣿⣹⣳⢾⣾⣹⣿⣿⡀⠀⢹
-                ⠏⠀⢸⣿⣿⡿⣳⢯⣟⣿⣺⣿⡿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣆⣀⠀⠀⠀⣠⣼⣿⣿⠃⠀⠀⠀⠀⠀⢹⣿⣿⢷⣯⣟⡾⢧⣿⣿⡇⠀⠘
-                ⠀⠀⢼⣿⣿⣿⣦⣿⣸⣷⣿⣿⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⡏⠀⢹⣿⣿⢿⣿⣿⣿⣿⣿⣿⣿⡿⠟⠁⢠⣾⣿⠟⣛⡛⠀⠀⠀⠀⠀⠀⠀⣿⣿⣯⣜⣡⣵⣾⣿⣿⣇⠀⠀
-                ⠀⠀⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⡇⠀⠈⢹⣿⣾⣿⣿⣿⣿⣿⣿⣿⣇⠀⠀⣿⣿⣿⣿⣿⣿⣆⠀⠀⠀⠀⠀⠀⢹⣿⣿⣿⣿⣿⣿⣿⣿⣧⠀⠀
-                ⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣿⣧⣤⣶⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠘⢿⣿⡁⠙⣿⠏⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀
-                ⠀⠀⣹⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠰⣿⣿⣿⣿⣿⣿⣿⣿⠟⠋⢻⣿⣿⣿⣿⣿⡇⠀⠀⠈⢻⣷⣼⡛⠀⠀⠀⠀⠀⠀⠀⣼⣿⣿⣿⣿⣿⣿⣿⣿⡟⠀⠀
-                ⠀⠀⢸⣿⣿⣿⣿⣽⡿⣿⣿⣿⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⣿⣿⠋⠉⠉⠋⠁⢠⣴⣾⣿⣿⣿⣿⣿⣿⣄⡀⠀⣰⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⣿⣿⡟⣯⣽⡛⣿⣿⣿⡏⠀⠀
-                ⢀⠀⠘⣿⣿⣿⣿⢨⡍⢻⣿⣿⣷⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⡇⠀⠀⠀⢀⣶⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠿⣿⣿⣿⠟⠀⠀⠀⠀⠀⠀⠀⢰⣿⡿⣟⠃⣭⡹⡷⣿⣿⠃⠀⢀
-                ⣾⡇⠀⢻⣿⣷⣿⠦⣼⣿⣿⣿⣿⣆⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣇⠀⠀⠀⠸⣿⣿⣿⡿⠛⠛⠻⣿⣿⣿⣷⣤⣤⡆⠀⠀⠀⠀⠀⠀⠀⠀⢠⣿⣿⣿⣹⡾⣥⢿⣧⣿⡟⠀⠀⡘
-                ⣿⣇⠀⠐⣿⣿⣿⣷⣿⣿⣿⣿⣿⣿⣆⠀⠀⠀⠀⠀⠀⠀⠐⣿⡟⠀⠀⠀⠀⣹⣿⣿⣧⡀⠀⠀⠉⠛⢿⣿⣿⣿⠁⠀⠀⠀⠀⠀⠀⠀⢠⣾⣿⣿⣿⣿⣷⣷⣾⣿⣿⠁⠀⢘⡗
-                ⠘⢿⡄⠀⠸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⡀⠀⠀⠀⠀⠀⠀⠙⢋⣀⣀⣀⣴⣿⣿⣿⠋⠁⠀⠀⠀⠀⣼⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⣠⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇⠀⠀⠘⠂
-                ⠀⠘⣷⡆⠀⠹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣄⠀⠀⠀⠀⠀⠀⢾⣿⣿⣿⣿⣿⣿⠃⠀⠀⢀⣶⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⢠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠏⠀⠀⠀⠁⠀
-                ⠀⠀⠘⣿⡄⠀⠙⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⡄⠀⠀⠀⠀⠈⠀⠙⠀⠈⠁⠀⠀⠀⠀⠀⠙⠉⠛⠙⠛⠉⠀⠀⠀⠀⢀⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠃⠀⠀⠀⠀⠀⠀
-                ⠀⠀⠀⠹⣿⡄⠀⠙⣿⣿⣿⣿⣿⠟⠉⣻⣿⣿⣿⣿⣷⣤⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣤⣶⣿⣿⣿⣿⠋⠉⠙⢿⣿⣿⣿⣿⠋⠀⠀⠀⠀⠀⠀⠀
-                ⠀⠀⠀⠀⠙⢿⣄⠀⠘⢿⣿⣿⣯⣴⣾⡿⠋⡝⢿⣿⣿⣿⣿⣷⣶⣤⣄⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣠⣤⣶⣾⣿⣿⣿⣿⡿⢿⡹⣷⣄⣡⣾⣿⣿⠟⠁⠀⠀⠀⠀⠀⠀⠀⠀
-                ⠀⠀⠀⠀⠀⠀⠹⣷⣄⠀⠘⢿⣿⣿⣿⣇⡚⢋⣸⠟⢫⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠙⢿⣷⣄⢉⣼⣿⣿⣿⠟⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-                ⠀⠀⠀⠀⠀⠀⠀⠈⠻⣶⣀⠀⠙⢻⣿⣿⣿⣿⣿⡐⠟⢠⣿⠆⢩⣿⠟⠻⣿⣿⣿⣿⣿⣿⣿⡿⢿⣿⣿⣿⡟⠠⣶⡿⣷⣈⣭⣿⣿⣿⣿⠟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-                ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠻⣷⣄⠀⠈⠛⢿⣿⣿⣿⣿⣿⣿⣠⣿⡏⢠⠀⣾⠏⠀⣿⡇⠸⣿⣧⠸⣿⣿⣿⣿⣦⣴⣶⣿⣿⣿⣿⠟⠋⠀⠀⠀⠀⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-                ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠛⢿⣶⣄⡀⠈⠙⠻⠿⣿⣿⣿⣿⣿⣷⣾⣿⣶⣷⣾⣷⣴⣿⣿⣶⣶⣿⣿⣿⣿⣿⡿⠿⠟⠋⠀⢀⣀⡴⠆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-                ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠻⢷⣶⣄⣀⡀⠙⠛⠻⠿⠿⠿⢿⣿⣿⣿⣿⣿⣿⣿⡿⡿⠿⠿⠛⠋⠀⠁⢀⣠⣴⡾⠟⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-                ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡉⠛⣿⣿⣿⣶⣶⣶⣶⡦⠀⠐⠊⠀⠁⠀⠀⢴⡤⣴⣶⣤⣶⣾⡿⠛⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</p>
-        </div>
+    <div class="footer-nav">
+        <a href="letter.html" class="next-btn">Chạm để nhận thư ❤️</a>
     </div>
 </div>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    // Mình giữ nguyên logic AJAX của bạn để chuyển trang mượt mà khi bấm nút
+    $('.next-btn').on('click', function(e) {
+        e.preventDefault();
+        const nextUrl = $(this).attr('href');
+
+        $('#app-container').fadeOut(1000, function() {
+            $.ajax({
+                url: nextUrl,
+                success: function(data) {
+                    const newContent = $(data).find('#app-container').html() || data;
+                    $('#app-container').html(newContent).fadeIn(1000);
+                    window.history.pushState({}, '', nextUrl);
+                    window.scrollTo(0, 0);
+                },
+                error: function() {
+                    window.location.href = nextUrl;
+                }
+            });
+        });
+    });
+</script>
 </body>
 </html>
