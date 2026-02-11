@@ -189,7 +189,14 @@
     $('.next-btn').on('click', function(e) {
         e.preventDefault();
         const nextUrl = $(this).attr('href');
+        $('audio, video').each(function() {
+            this.pause();
+            this.currentTime = 0;
+        });
 
+        // 2. Nếu nhạc được tạo bằng JavaScript (new Audio)
+        // Cách này sẽ "dọn dẹp" luôn các luồng âm thanh đang chạy ngầm
+        window.stop();
         $('#app-container').fadeOut(1000, function() {
             $.ajax({
                 url: nextUrl,
