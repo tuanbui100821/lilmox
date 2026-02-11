@@ -25,7 +25,6 @@
             border-radius: 2px;
             position: relative;
             min-height: 450px;
-            /* CỐ ĐỊNH CHIỀU RỘNG KHUNG */
             box-sizing: border-box;
         }
 
@@ -49,16 +48,14 @@
             font-family: 'Dancing Script', cursive;
             font-size: 24px;
             line-height: 1.6;
-            color: #000000; /* Màu đen mực bút mực */
+            color: #000000;
             white-space: pre-wrap;
             position: relative;
             display: inline;
-            /* TỰ ĐỘNG XUỐNG DÒNG KHI CHẠM LỀ */
             word-break: break-word;
             overflow-wrap: break-word;
         }
 
-        /* Ngòi bút */
         #pen {
             position: absolute;
             width: 50px;
@@ -68,12 +65,10 @@
             background-repeat: no-repeat;
             z-index: 10;
             pointer-events: none;
-            /* Căn chỉnh ngòi bút trỏ vào đầu chữ */
             transform: translate(-5px, -35px);
             transition: all 0.1s linear;
         }
 
-        /* Hiệu ứng ngòi bút rung nhẹ khi viết */
         .pen-writing {
             animation: write-move 0.1s infinite alternate;
         }
@@ -94,19 +89,6 @@
         }
 
         .show-signature { opacity: 1; }
-
-        .btn-replay {
-            display: block;
-            margin-top: 40px;
-            text-align: center;
-            color: #d35400;
-            text-decoration: none;
-            font-weight: bold;
-            font-family: sans-serif;
-            font-size: 14px;
-            opacity: 0;
-            transition: 2s;
-        }
     </style>
 </head>
 <body>
@@ -119,38 +101,41 @@
         <div id="pen"></div>
 
         <div class="signature" id="signature">Yêu em nhiều, <br> Ba Sữa & Bùi Sữa ❤️</div>
-        <a href="index.html" class="btn-replay" id="replay">Xem lại từ đầu ⬅</a>
     </div>
 </div>
 
 <script>
-    const text = "Vậy là hành trình nhỏ của chúng mình đến đây là trang cuối rồi...rưqerweqrqwrwqrwqrwqerwqerwqerwqrqwerqwerfsadfasdfasdfasdfsafsadfsadfsadrewqrqewrweq \n\nAnh muốn nói rằng, cảm ơn em vì đã luôn ở bên cạnh anh, cùng anh chăm sóc Bùi Sữa, cùng anh nghe những bài nhạc cũ và cả những lần bao dung cho cái sự 'ham đá bóng' của anh nữa." +
-        "\n\nThế giới ngoài kia có thể ồn ào, nhưng ở đây, trong thế giới nhỏ này, anh chỉ mong chúng mình cứ bình yên và hạnh phúc như thế thôi." +
-        "\n\nEm đồng ý viết tiếp những trang tiếp theo cùng anh nhé?sadfasdfsadfasdfasdfasdfasdffsafrewqrqwerwqerwqerqwerqwrwqerwqerqwerwqerqwerqwerqwerwqerqwerqwerqwerwqersdfasdfsadfasdfasd";
+    const text = "Shakespear từng nói trong A Midsummer Night rằng: \"The course of true love never did run smooth\"" +
+        " theo ý anh hiểu nghĩa là \"Dòng chảy của tình yêu đích thực chẳng bao giờ lặng lẽ êm đềm.\"" +
+        " \n Anh biết mình không phải là người khéo léo, tình yêu của anh cũng có phần vụng về, thô ráp nhưng anh " +
+        "vẫn đang cố gắng từng ngày " +
+        ", mài giũa bản thân từng chút một, để không chỉ hoàn thiện mình, mà còn để yêu em một cách trọn vẹn nhất..\n" +
+        "Cảm ơn em đã kiên nhẫn với những lần anh đá bóng muộn, " +
+        "cảm ơn em đã cùng anh chia sẻ những bản nhạc hay, " +
+        "cảm ơn những bữa cơm ngon em nấu cho anh và Vinh ," +
+        "cảm ơn những lần đã rơi nước mắt vì anh , " +
+        "cảm ơn những sự quan tâm vỗ về của em trong suốt thời gian qua , " +
+        "cảm ơn vì sau tất cả đã không ngừng kiên nhẫn" +
+        " và cảm ơn em vì đã là một phần không thể thiếu trong cuộc đời anh." +
+        " Dù sau này thế nào, mình cũng cứ nắm tay nhau thật chặt nhé em  !";
 
     let index = 0;
     const speed = 110;
     const typewriterElement = document.getElementById('typewriter');
     const pen = document.getElementById('pen');
     const signatureElement = document.getElementById('signature');
-    const replayBtn = document.getElementById('replay');
 
     function typeWriter() {
         if (index < text.length) {
-            // Thêm hiệu ứng rung cho bút khi đang viết
             pen.classList.add('pen-writing');
-
             typewriterElement.innerText += text.charAt(index);
             updatePenPosition();
-
             index++;
             setTimeout(typeWriter, speed);
         } else {
-            // Khi xong thư
             pen.classList.remove('pen-writing');
             pen.style.display = "none";
             signatureElement.classList.add('show-signature');
-            replayBtn.style.opacity = "1";
         }
     }
 
@@ -162,12 +147,12 @@
 
         if (lastRect) {
             const containerRect = document.querySelector('.letter-container').getBoundingClientRect();
-            // Cập nhật vị trí pen bám sát ký tự cuối cùng
             pen.style.left = (lastRect.right - containerRect.left) + "px";
             pen.style.top = (lastRect.bottom - containerRect.top) + "px";
         }
     }
 
+    // Bắt đầu viết sau 1.5 giây khi trang tải xong
     setTimeout(typeWriter, 1500);
 </script>
 </body>
