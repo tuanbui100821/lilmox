@@ -139,6 +139,11 @@
                     // Thay đổi nội dung hiển thị mà không đụng đến thẻ <audio>
                     $('#app-container').fadeOut(500, function() {
                         $(this).html(newContent).fadeIn(500);
+                        $('html, body').css({
+                            'overflow-y': 'auto',
+                            'height': 'auto'
+                        });
+                        window.scrollTo(0, 0);
                     });
 
                     // Cập nhật đường dẫn trên trình duyệt (tùy chọn)
