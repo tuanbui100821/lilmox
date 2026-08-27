@@ -1,0 +1,560 @@
+﻿[DANH SÁCH FILE] Thư mục: gallery | Tên file: 1 (1).jpg
+[DANH SÁCH FILE] Thư mục: gallery | Tên file: 1 (10).jpg
+[DANH SÁCH FILE] Thư mục: gallery | Tên file: 1 (11).jpg
+[DANH SÁCH FILE] Thư mục: gallery | Tên file: 1 (12).jpg
+[DANH SÁCH FILE] Thư mục: gallery | Tên file: 1 (13).jpg
+[DANH SÁCH FILE] Thư mục: gallery | Tên file: 1 (14).jpg
+[DANH SÁCH FILE] Thư mục: gallery | Tên file: 1 (15).jpg
+[DANH SÁCH FILE] Thư mục: gallery | Tên file: 1 (16).jpg
+[DANH SÁCH FILE] Thư mục: gallery | Tên file: 1 (17).jpg
+[DANH SÁCH FILE] Thư mục: gallery | Tên file: 1 (18).jpg
+[DANH SÁCH FILE] Thư mục: gallery | Tên file: 1 (19).jpg
+[DANH SÁCH FILE] Thư mục: gallery | Tên file: 1 (2).jpg
+[DANH SÁCH FILE] Thư mục: gallery | Tên file: 1 (20).jpg
+[DANH SÁCH FILE] Thư mục: gallery | Tên file: 1 (21).jpg
+[DANH SÁCH FILE] Thư mục: gallery | Tên file: 1 (22).jpg
+[DANH SÁCH FILE] Thư mục: gallery | Tên file: 1 (23).jpg
+[DANH SÁCH FILE] Thư mục: gallery | Tên file: 1 (24).jpg
+[DANH SÁCH FILE] Thư mục: gallery | Tên file: 1 (25).jpg
+[DANH SÁCH FILE] Thư mục: gallery | Tên file: 1 (26).jpg
+[DANH SÁCH FILE] Thư mục: gallery | Tên file: 1 (27).jpg
+[DANH SÁCH FILE] Thư mục: gallery | Tên file: 1 (28).jpg
+[DANH SÁCH FILE] Thư mục: gallery | Tên file: 1 (29).jpg
+[DANH SÁCH FILE] Thư mục: gallery | Tên file: 1 (3).jpg
+[DANH SÁCH FILE] Thư mục: gallery | Tên file: 1 (30).jpg
+[DANH SÁCH FILE] Thư mục: gallery | Tên file: 1 (31).jpg
+[DANH SÁCH FILE] Thư mục: gallery | Tên file: 1 (32).jpg
+[DANH SÁCH FILE] Thư mục: gallery | Tên file: 1 (33).jpg
+[DANH SÁCH FILE] Thư mục: gallery | Tên file: 1 (34).jpg
+[DANH SÁCH FILE] Thư mục: gallery | Tên file: 1 (35).jpg
+[DANH SÁCH FILE] Thư mục: gallery | Tên file: 1 (36).jpg
+[DANH SÁCH FILE] Thư mục: gallery | Tên file: 1 (37).jpg
+[DANH SÁCH FILE] Thư mục: gallery | Tên file: 1 (38).jpg
+[DANH SÁCH FILE] Thư mục: gallery | Tên file: 1 (39).jpg
+[DANH SÁCH FILE] Thư mục: gallery | Tên file: 1 (4).jpg
+[DANH SÁCH FILE] Thư mục: gallery | Tên file: 1 (40).jpg
+[DANH SÁCH FILE] Thư mục: gallery | Tên file: 1 (41).jpg
+[DANH SÁCH FILE] Thư mục: gallery | Tên file: 1 (42).jpg
+[DANH SÁCH FILE] Thư mục: gallery | Tên file: 1 (43).jpg
+[DANH SÁCH FILE] Thư mục: gallery | Tên file: 1 (44).jpg
+[DANH SÁCH FILE] Thư mục: gallery | Tên file: 1 (5).jpg
+[DANH SÁCH FILE] Thư mục: gallery | Tên file: 1 (6).jpg
+[DANH SÁCH FILE] Thư mục: gallery | Tên file: 1 (7).jpg
+[DANH SÁCH FILE] Thư mục: gallery | Tên file: 1 (8).jpg
+[DANH SÁCH FILE] Thư mục: gallery | Tên file: 1 (9).jpg
+[DANH SÁCH FILE] Thư mục: mp3 | Tên file: Dilemma.mp3
+[DANH SÁCH FILE] Thư mục: mp3 | Tên file: Michael Jackson - Love Never Felt So Good (Official Video).mp3
+[DANH SÁCH FILE] Thư mục: mp3 | Tên file: Real Love - Mỹ Anh ft. Khắc Hưng.mp3
+[DANH SÁCH FILE] Thư mục: mp3 | Tên file: Yuna - Crush ft. Usher.mp3
+
+============================================================
+ DIRECTORY: [Moxkon] 
+ FILE NAME: gallery.html
+ [NỘI DUNG CODE DƯỚI ĐÂY]
+============================================================
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Gallery</title>
+    <link rel="stylesheet" href="index.css">
+    <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
+    <style>
+        html, body {
+            margin: 0; padding: 0;
+            height: auto !important;
+            overflow-y: auto !important;
+            scroll-behavior: smooth;
+        }
+        .bgoverlay {
+            min-height: 100vh;
+            height: auto !important;
+            background-attachment: fixed;
+            position: relative;
+            background-size: cover;
+            overflow: hidden;
+        }
+
+        /* Hiá»‡u á»©ng Floating Hearts */
+        .heart {
+            position: fixed;
+            color: #ff4d6d;
+            font-size: 20px;
+            pointer-events: none;
+            z-index: 0;
+            animation: fly 10s linear infinite;
+            opacity: 0.6;
+        }
+        @keyframes fly {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+        }
+
+        .gallery-container { padding: 50px 20px; text-align: center; position: relative; z-index: 2; }
+
+        /* Hiá»‡u á»©ng trÆ°á»£t áº£nh khi load */
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-bottom: 100px;
+        }
+        .photo-grid img {
+            z-index: 3 !important;
+            width: 100%; height: 350px; object-fit: cover;
+            border-radius: 15px; border: 5px solid ;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            opacity: 0; transform: translateY(30px); /* Gá»‘c Ä‘á»ƒ diá»…n hoáº¡t */
+        }
+        .photo-grid img.show { opacity: 1; transform: translateY(0); }
+        .photo-grid img:hover { transform: scale(1.05) rotate(1deg); border-color: #ff4d6d; }
+
+        /* Lightbox - PhÃ³ng to áº£nh */
+        #lightbox {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9); display: none;
+            justify-content: center; align-items: center; z-index: 1000;
+        }
+        #lightbox img { max-width: 90%; max-height: 85%; border-radius: 10px; border: 3px solid #fff; }
+
+        h1 { font-family: 'Pacifico', cursive; font-size: 50px; color: white; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
+        .back-btn {
+            display: inline-block; margin-bottom: 20px; color: #fff;
+            text-decoration: none; background: rgba(255, 77, 109, 0.7);
+            padding: 10px 25px; border-radius: 30px; font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="bgoverlay">
+    <div id="heart-container"></div>
+    <div class="gallery-container">
+        <a href="index.html" class="back-btn">â¬… Back</a>
+        <h1>Our Memories</h1>
+        <div class="photo-grid" id="image-gallery"></div>
+    </div>
+</div>
+
+<div id="lightbox" onclick="this.style.display='none'">
+    <img id="lightbox-img" src="">
+</div>
+
+<script>
+    const galleryGrid = document.getElementById('image-gallery');
+    const folderPath = "./gallery/";
+
+    // 1. Tá»± Ä‘á»™ng náº¡p áº£nh Windows "1 (n).jpg"
+    function tryLoadImage(index) {
+        const img = new Image();
+        const fileName = `1 (${index}).jpg`;
+        img.src = folderPath + fileName;
+
+        img.onload = function() {
+            const imgElement = document.createElement('img');
+            imgElement.src = img.src;
+            imgElement.onclick = () => {
+                document.getElementById('lightbox-img').src = img.src;
+                document.getElementById('lightbox').style.display = 'flex';
+                isAutoScrolling = false; // Dá»«ng cuá»™n khi Ä‘ang xem áº£nh
+            };
+            galleryGrid.appendChild(imgElement);
+
+            // Hiá»‡u á»©ng hiá»‡n dáº§n cho tá»«ng áº£nh
+            setTimeout(() => imgElement.classList.add('show'), index * 100);
+
+            tryLoadImage(index + 1);
+        };
+
+        img.onerror = function() {
+            if(index > 1) startAutoScroll();
+        };
+    }
+
+    // 2. Tá»± Ä‘á»™ng cuá»™n
+    let scrollSpeed = 0.8;
+    let isAutoScrolling = true;
+
+    function startAutoScroll() {
+        function scroll() {
+            if (isAutoScrolling) {
+                window.scrollBy(0, scrollSpeed);
+                if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight - 2) {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+            }
+            requestAnimationFrame(scroll);
+        }
+        setTimeout(scroll, 2000);
+    }
+
+    // 3. Hiá»‡u á»©ng tim bay
+    function createHeart() {
+        const heart = document.createElement('div');
+        heart.classList.add('heart');
+        heart.innerHTML = 'â¤ï¸';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.animationDuration = (Math.random() * 5 + 5) + 's';
+        document.getElementById('heart-container').appendChild(heart);
+        setTimeout(() => heart.remove(), 10000);
+    }
+    setInterval(createHeart, 800);
+
+    // TÆ°Æ¡ng tÃ¡c ngÆ°á»i dÃ¹ng
+    window.addEventListener("wheel", () => isAutoScrolling = false);
+    window.addEventListener("touchstart", () => isAutoScrolling = false);
+
+    tryLoadImage(1);
+</script>
+</body>
+</html>
+
+------------------------------------------------------------
+
+============================================================
+ DIRECTORY: [Moxkon] 
+ FILE NAME: index.css
+ [NỘI DUNG CODE DƯỚI ĐÂY]
+============================================================
+body {
+    background: url(https://subtlepatterns.com/patterns/noise_lines.png);
+    font-family: 'Pacifico', cursive;
+    overflow: hidden;
+    color: #fff;
+}
+
+.bgoverlay {
+    background: rgba(103, 58, 183, 0.7);
+    position: fixed; /* Äá»•i tá»« absolute sang fixed */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+}
+
+.container {
+    position: relative;
+    margin: 120px auto 0 auto;
+    width: 320px;
+}
+
+.ico {
+    display: block;
+    width: 320px;
+    height: 320px;
+}
+
+.open .ico {
+    animation: open 2s;
+    transform: scale(3);
+}
+
+.ico .title {
+    position: absolute;
+    top: 55%;
+    left: 49%;
+    margin-left: -95px;
+    margin-top: -73px;
+    z-index: 4;
+    font-size: 50px;
+    font-family: 'Pacifico', 'cursive';
+    color: #fff;
+    cursor: pointer;
+    text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
+}
+
+.open .ico .title {
+    opacity: 0;
+    transition: all 0.2s ease;
+    top: -100px;
+}
+
+.ico:before,
+.ico:after,
+.ico2:before,
+.ico2:after {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.ico:before,
+.ico:after,
+.ico2:before,
+.ico2:after {
+    display: block;
+    font-size: 20em;
+    color: #ff4081;
+    content: '\f004';
+    font-family: 'Font Awesome 5 Free';
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.ico2:before,
+.ico2:after {
+    color: #e91e63;
+}
+
+.ico:before {
+    z-index: 3;
+}
+
+.ico:after {
+    animation: explode 4s infinite;
+}
+
+.ico2:before {
+    animation: explodeSmall 3s infinite;
+}
+
+.ico2:after {
+    animation: explodeSmall 2s infinite;
+}
+
+.endtext {
+    opacity: 0;
+    position: absolute;
+    top: -100px;
+    width: 100%;
+}
+
+.open .endtext {
+    top: 0;
+    opacity: 1;
+    animation: show 5s;
+}
+
+.endtext .close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
+}
+
+.endtext h1,
+.endtext h2,
+.endtext h3 {
+    text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    font-weight: normal;
+}
+
+.endtext h1 {
+    font-size: 20px;
+}
+
+.endtext h2 {
+    font-size: 25px;
+}
+
+.endtext h3 {
+    position: absolute;
+    left: 150px;
+    font-size: 15px;
+}
+
+@keyframes explode {
+    from {
+        transform: scale(1);
+        opacity: 1;
+    }
+    to {
+        transform: scale(1.6);
+        opacity: 0;
+    }
+}
+
+@keyframes explodeSmall {
+    from {
+        transform: scale(1);
+        opacity: 1;
+    }
+    to {
+        transform: scale(1.2);
+        opacity: 0;
+    }
+}
+
+@keyframes open {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(3);
+    }
+}
+
+@keyframes show {
+    from {
+        opacity: 0;
+        top: -100px;
+    }
+    to {
+        opacity: 1;
+        top: 0;
+    }
+}
+
+------------------------------------------------------------
+
+============================================================
+ DIRECTORY: [Moxkon] 
+ FILE NAME: index.html
+ [NỘI DUNG CODE DƯỚI ĐÂY]
+============================================================
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="index.css">
+    <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/solid.min.css">
+    <title>ThÃ­ch thÃ¬ yÃªu thoy</title>
+</head>
+
+<body>
+<audio id="bg-music" src="./mp3/Dilemma.mp3" autoplay loop></audio>
+
+<div id="app-container">
+    <div class="bgoverlay">
+        <div class="container">
+                <span class="ico">
+                    <span class="ico2"></span>
+                    <span class="title">Click Me</span>
+                </span>
+            <div class="endtext">
+                <span class="close" title="Restart">x</span>
+                <h1>Send: MÃµ kon</h1>
+                <h1>Luvu so much</h1>
+                <h2>King Tuan Minh x Queen Thanh Hang</h2>
+                <br>
+                <span></span>
+                <div>
+                    <a href="gallery.html" id="btn-gallery" style="color: #fff; text-decoration: underline; font-size: 30px;">Look through album â¤ï¸</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="index.js"></script>
+
+<script>
+    $(document).ready(function() {
+        // Xá»­ lÃ½ click Ä‘á»ƒ chuyá»ƒn trang khÃ´ng load láº¡i
+        $(document).on('click', '#btn-gallery', function(e) {
+            e.preventDefault(); // NgÄƒn trÃ¬nh duyá»‡t load trang má»›i
+            const url = $(this).attr('href');
+
+            // DÃ¹ng AJAX Ä‘á»ƒ láº¥y ná»™i dung tá»« file gallery.html
+            $.ajax({
+                url: url,
+                success: function(data) {
+                    // TrÃ­ch xuáº¥t pháº§n ná»™i dung chÃ­nh tá»« gallery.html (giáº£ sá»­ náº±m trong body)
+                    const newContent = $(data).find('body').html() || data;
+
+                    // Thay Ä‘á»•i ná»™i dung hiá»ƒn thá»‹ mÃ  khÃ´ng Ä‘á»¥ng Ä‘áº¿n tháº» <audio>
+                    $('#app-container').fadeOut(500, function() {
+                        $(this).html(newContent).fadeIn(500);
+                    });
+
+                    // Cáº­p nháº­t Ä‘Æ°á»ng dáº«n trÃªn trÃ¬nh duyá»‡t (tÃ¹y chá»n)
+                    window.history.pushState({}, '', url);
+                },
+                error: function() {
+                    alert("KhÃ´ng thá»ƒ táº£i Ä‘Æ°á»£c album, hÃ£y kiá»ƒm tra láº¡i file gallery.html nhÃ©!");
+                }
+            });
+        });
+
+        // Tá»± Ä‘á»™ng phÃ¡t nháº¡c khi ngÆ°á»i dÃ¹ng click láº§n Ä‘áº§u vÃ o trang (vÃ¬ chÃ­nh sÃ¡ch trÃ¬nh duyá»‡t)
+        $('body').one('click', function() {
+            const audio = document.getElementById('bg-music');
+            audio.play();
+        });
+    });
+</script>
+</body>
+
+</html>
+
+------------------------------------------------------------
+
+============================================================
+ DIRECTORY: [Moxkon] 
+ FILE NAME: index.js
+ [NỘI DUNG CODE DƯỚI ĐÂY]
+============================================================
+$(document).ready(function() {
+    $('.title').click(function() {
+        $('.container').addClass('open');
+    });
+
+
+    $('.close').click(function() {
+        $('.container').removeClass('open');
+    });
+});
+
+------------------------------------------------------------
+
+============================================================
+ DIRECTORY: [Moxkon] 
+ FILE NAME: powershelltext.txt
+ [NỘI DUNG CODE DƯỚI ĐÂY]
+============================================================
+# 1. Thiáº¿t láº­p Ä‘Æ°á»ng dáº«n
+$outputFile = "output_gon_gang.txt"
+if (Test-Path $outputFile) { Remove-Item $outputFile }
+
+# 2. Äá»‹nh nghÄ©a cÃ¡c thÆ° má»¥c chá»‰ muá»‘n láº¥y tÃªn file (khÃ´ng láº¥y ná»™i dung)
+$listOnlyFolders = @("gallery", "mp3")
+
+# 3. Láº¥y táº¥t cáº£ cÃ¡c má»¥c trong thÆ° má»¥c hiá»‡n táº¡i
+Get-ChildItem -Recurse -Exclude "node_modules", ".git", "dist", "build" | ForEach-Object {
+    $item = $_
+    $parentDir = $item.Directory.Name
+    
+    # TrÆ°á»ng há»£p 1: Náº¿u file náº±m trong thÆ° má»¥c gallery hoáº·c mp3 -> Chá»‰ ghi tÃªn file
+    if ($listOnlyFolders -contains $parentDir) {
+        $msg = "[DANH SÃCH FILE] ThÆ° má»¥c: $parentDir | TÃªn file: $($item.Name)"
+        $msg | Out-File -FilePath $outputFile -Append -Encoding utf8
+    }
+    # TrÆ°á»ng há»£p 2: Náº¿u lÃ  file code (py, js, html, css...) -> Ghi cáº£ ná»™i dung
+    elseif ($item.Extension -match "\.(py|js|html|css|txt|json)$") {
+        $header = @"
+
+============================================================
+ DIRECTORY: [$parentDir] 
+ FILE NAME: $($item.Name)
+ [Ná»˜I DUNG CODE DÆ¯á»šI ÄÃ‚Y]
+============================================================
+"@
+        $header | Out-File -FilePath $outputFile -Append -Encoding utf8
+        
+        try {
+            Get-Content $item.FullName | Out-File -FilePath $outputFile -Append -Encoding utf8
+        } catch {
+            " [Lá»—i: KhÃ´ng thá»ƒ Ä‘á»c ná»™i dung file] " | Out-File -FilePath $outputFile -Append -Encoding utf8
+        }
+        
+        "`n" + ("-" * 60) | Out-File -FilePath $outputFile -Append -Encoding utf8
+    }
+}
+
+Write-Host "Xong! ÄÃ£ gom code vÃ  liá»‡t kÃª danh sÃ¡ch áº£nh/nháº¡c vÃ o $outputFile" -ForegroundColor Green
+
+------------------------------------------------------------
