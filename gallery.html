@@ -179,8 +179,14 @@
             tryLoadImage(index + 1);
         };
 
-        img.onerror = function() {
-            if(index > 1) startAutoScroll();
+        img.onerror = function () {
+            // Không dừng gallery nữa.
+            // Bỏ qua ảnh lỗi và thử ảnh tiếp theo.
+            if (index < maxImages) {
+                tryLoadImage(index + 1);
+            } else {
+                startAutoScroll();
+            }
         };
     }
 
