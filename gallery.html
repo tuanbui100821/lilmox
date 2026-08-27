@@ -156,45 +156,42 @@
             });
         });
     });
+    // const galleryGrid = document.getElementById('image-gallery');
+    // const folderPath = "./gallery/";
+    // const maxImages = 500;
+
     const galleryGrid = document.getElementById('image-gallery');
     const folderPath = "./gallery/";
-    const maxImages = 500;
+    const totalImages = 44;
 
-    // 1. Tự động nạp ảnh Windows "1 (n).jpg"
-    function tryLoadImage(index) {
-        const img = new Image();
+    for (let index = 1; index <= totalImages; index++) {
+        const imgElement = document.createElement('img');
         const fileName = `1 (${index}).jpg`;
-        img.src = folderPath + fileName;
 
-        img.onload = function() {
-            const imgElement = document.createElement('img');
-            imgElement.src = img.src;
-            imgElement.onclick = () => {
-                document.getElementById('lightbox-img').src = img.src;
-                document.getElementById('lightbox').style.display = 'flex';
-                isAutoScrolling = false;
-            };
-            galleryGrid.appendChild(imgElement);
+        imgElement.src = folderPath + fileName;
+        imgElement.alt = `Memory ${index}`;
 
-            setTimeout(() => imgElement.classList.add('show'), index * 100);
-            tryLoadImage(index + 1);
+        imgElement.onload = function () {
+            imgElement.classList.add('show');
         };
 
-        img.onerror = function () {
-            // Không dừng gallery nữa.
-            // Bỏ qua ảnh lỗi và thử ảnh tiếp theo.
-            if (index < maxImages) {
-                tryLoadImage(index + 1);
-            } else {
-                startAutoScroll();
-            }
+        imgElement.onerror = function () {
+            console.error("Không tìm thấy ảnh:", fileName);
+            imgElement.remove();
         };
+
+        imgElement.onclick = function () {
+            document.getElementById('lightbox-img').src = imgElement.src;
+            document.getElementById('lightbox').style.display = 'flex';
+            isAutoScrolling = false;
+        };
+
+        galleryGrid.appendChild(imgElement);
     }
-
     // 2. Tự động cuộn
     let scrollSpeed = 0.8;
-    let isAutoScrolling = true;
 
+    let isAutoScrolling = true;
     function startAutoScroll() {
         function scroll() {
             if (isAutoScrolling) {
@@ -206,8 +203,8 @@
             requestAnimationFrame(scroll);
         }
         setTimeout(scroll, 2000);
-    }
 
+    }
     // 3. Hiệu ứng tim bay
     function createHeart() {
         const heart = document.createElement('div');
@@ -218,12 +215,11 @@
         document.getElementById('heart-container').appendChild(heart);
         setTimeout(() => heart.remove(), 10000);
     }
+
     setInterval(createHeart, 800);
-
     window.addEventListener("wheel", () => isAutoScrolling = false);
-    window.addEventListener("touchstart", () => isAutoScrolling = false);
 
-    tryLoadImage(1);
+    window.addEventListener("touchstart", () => isAutoScrolling = false);
 </script>
 </body>
 </html>
